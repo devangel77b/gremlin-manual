@@ -1,0 +1,47 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{natops_blurb}[2021/05/22 NATOPs blurbage]
+
+\RequirePackage{etoolbox}
+\RequirePackage{tikz}
+\usetikzlibrary{shadows,decorations}
+\usetikzlibrary{decorations.pathmorphing}
+
+\newenvironment{_natops_generic_blurb}[1][]{%
+\ifblank{#1}{}{
+\begin{center}#1\end{center}}
+\begin{quote}}{%
+\end{quote}}
+
+\newcommand{\warninglight}[1]{%
+\begin{tikzpicture}
+\node [copy shadow={fill=black,shadow xshift=1ex,shadow yshift=-1ex},
+           fill=white,draw=black,thick,font=\bfseries\sffamily,
+           minimum width=1.25in, minimum height=1cm
+           ] {#1};
+\end{tikzpicture}}
+
+\newcommand{\WARNING}{\warninglight{WARNING}}
+
+\newenvironment{warning}{%
+\begin{_natops_generic_blurb}[\WARNING]}{%
+\end{_natops_generic_blurb}}
+
+\newcommand{\cautionlight}[1]{%
+\begin{tikzpicture}
+\node [fill=white,draw=black,line width=0.5mm,font=\bfseries\sffamily, 
+	decorate, decoration={bent,snake,amplitude=0.5mm,segment length=1mm},
+	minimum width=0.75in, minimum height=1cm
+	] {#1};
+\end{tikzpicture}}
+
+\newcommand{\CAUTION}{\cautionlight{CAUTION}}
+
+\newenvironment{caution}{%
+\begin{_natops_generic_blurb}[\CAUTION]}{%
+\end{_natops_generic_blurb}}
+
+\newcommand{\Note}{\sffamily\bfseries Note}
+\newenvironment{note}{%
+\begin{_natops_generic_blurb}[\Note]}{%
+\end{_natops_generic_blurb}}
+

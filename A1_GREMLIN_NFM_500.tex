@@ -1,0 +1,80 @@
+\documentclass{book}
+
+\title{Pocket Checklist, FT Gremlin}
+\author{Dennis Evangelista}
+\date{\today}
+
+% set page size 5.5 x 8.5
+% use helvetica
+
+% warning, caution, note; redefine warning and caution to get correct boxes (TODO)
+
+% used for various indices
+\usepackage[splitindex]{imakeidx}
+\makeindex
+\makeindex[name=misc,title=Miscellaneous data index]
+\makeindex[name=emergency,title=Emergency procedures index]
+% indices should be 1 column, helvetica all caps 
+
+% for chapter toc
+\usepackage{minitoc}
+% chapter toc should be 1 column, helvetica, named "index".. 
+
+\begin{document}
+\maketitle
+% cover page
+\printindex[misc] % miscellaneous data index using imakeidx
+% ttitle page
+  % list of effective pages  - not doing
+  % change summary - not doing
+\printindex[emergency] % emergency procedures index using imakeidx
+  % warning advisory cautions light - not doing
+% for chapter toc
+\dominitoc
+\faketableofcontents
+
+% emergency procedure tabs
+% pages have barberpole on top
+\chapter{Rotor injury}\index[emergency]{rotor injury}
+\minitoc % chapter table of contents called index use minitoc
+
+Hello world. 
+
+\chapter{Loss of FPV}\index[emergency]{loss of fpv}
+\minitoc
+
+Hello world. 
+\section{In flight}\index[emergency]{loss of fpv!in flight}
+\section{On deck}\index[emergency]{loss of fpv!on deck}
+
+\chapter{Loss of control}\index[emergency]{loss of control}
+\minitoc
+\section{In flight}\index[emergency]{loss of control!in flight}
+\section{On deck}\index[emergency]{loss of control!on deck}
+
+\chapter{Crash}\index[emergency]{crash}
+\minitoc
+
+\chapter{Battery fire}\index[emergency]{battery fire}
+\minitoc
+
+% no barberpole
+\chapter{Reference data}
+\minitoc % chapter table of contents called "reference data"
+\section{Administrative brief}
+\section{Preflight checklist}
+\section{Takeoff checklist}
+\section{Landing checklist}
+\section{Postlanding}
+\section{On-deck, maintenance troubleshooting}
+
+% no barberpole, fold out pages
+\chapter{System diagrams}
+\index[misc]{system diagrams}
+\index{system diagrams}
+
+% back cover
+% crosswind chart at end
+%TO USE, DETERMINE WIND ANGLE RELATIVE TO RUN- WAY HEADING. ENTER CHART FROM LOWER LEFT ALONG WIND ANGLE LINE TO REPORTED VELOCITY ARC. FROM (INTERSECTION OF WIND ANGLE AND VELOCITY DETERMINE HEADWIND COMPONENT BY PROJECTING HORIZONTALLY TO LEFT; DETERMINE CROSSWIND COMPONENT BY DROPPING VERTICALLY TO BASELINE.
+
+\end{document}

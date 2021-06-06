@@ -1,0 +1,26 @@
+\documentclass{article}
+
+\usepackage{natops_barberpole}
+
+\newcommand{\manualnumber}{\sffamily\bfseries A1-xxxx-FM-000}
+
+\usepackage{fancyhdr}
+\fancyhead[LO]{\oddpagebarberpole}
+\fancyhead[RE]{\evenpagebarberpole}
+\pagestyle{fancy}
+\renewcommand{\headrule}{}
+\fancyhead[RO]{\manualnumber}
+\fancyhead[LE]{\manualnumber}
+\renewcommand{\thepage}{\sffamily\bfseries\thesection\ -- \arabic{page}}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+%\oddpagebarberpole
+Test of barberpole patterns using TikZ here. 
+\clearpage
+%\evenpagebarberpole
+Test of barberpole patterns on second page. 
+\clearpage
+%\topbarberpole
+Test of top only
+\end{document}

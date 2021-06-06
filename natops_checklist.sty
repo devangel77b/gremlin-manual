@@ -1,0 +1,16 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{natops_checklist}[2021/05/22 NATOPs checklist]
+
+\usepackage{enumitem}
+\newlist{checklist}{enumerate}{3}
+\setlist[checklist,1]{label=\arabic*.}
+\setlist[checklist,2]{label=\alph*)}
+\setlist[checklist,3]{label=\roman*)}
+
+\newcommand{\sw}[1]{\MakeUppercase{#1}}
+\newcommand{\chk}[1]{\dotfill {#1}}
+
+% NOTE: to redefine chk items like for the Flight Manual
+\renewcommand{\chk}[1]{-- {#1}}
+
+% You can also redefine the numbering etc using \setlist

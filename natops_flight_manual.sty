@@ -1,0 +1,123 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{natops_flight_manualt}[2021/06/01 NATOPs flight manual]
+
+% use helvetica and times new roman
+\RequirePackage[scaled]{helvet}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{mathptmx}
+
+% warning, caution, note
+\RequirePackage{natops_blurb}
+\RequirePackage{natops_checklist}
+\RequirePackage{natops_barberpole}
+
+
+% change bars
+%MIL-DTL-85025B(AS)
+%Change symbol. Changes to text and figures (including new material or added pages) shall be indicated by a black vertical line (change bar) beside lines of affected text in the nearest outside margin. The change bar shall be 6.5 points in width and shall be set 6 points from the applicable text or figure frame (see figure 4). If a chapter is completely changed or new, place a vertical line in the margin by only the chapter number and title. Delete previous change bars on a page when the page is subsequently changed or the publication is revised; change bars shall reflect current changes only.
+
+\RequirePackage{changebar}
+\setlength{\changebarwidth}{6.5pt}
+\setlength{\changebarsep}{6pt}
+\setcounter{changebargrey}{0}
+
+% manual number
+\newcommand{\themanualnumber}{A1-GREMLIN-NFM-000}
+
+% page setups
+\RequirePackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt} % turn off head rule
+% define base page style
+\fancypagestyle{empty}{%
+\fancyhf{}
+\fancyhead[RO,LE]{\sffamily\bfseries\large\themanualnumber}
+\fancyfoot[CO,CE]{}
+\fancyfoot[RO,LE]{\sffamily\bfseries ORIGINAL}
+}
+\fancypagestyle{plain}[empty]{%
+\fancyhf{}
+\fancyhead[RO,LE]{\sffamily\bfseries\large\themanualnumber}
+\fancyfoot[CO,CE]{\sffamily\bfseries\thechapter\ - \thepage}
+\fancyfoot[RO,LE]{\sffamily\bfseries ORIGINAL}
+}
+% derived page styles
+\fancypagestyle{emergency}[plain]{%
+\fancyhead[LO]{\oddpagebarberpole}
+\fancyhead[RE]{\evenpagebarberpole}
+}
+\fancypagestyle{frontmatter}[plain]{%
+\fancyfoot[CO,CE]{\thepage}
+}
+
+% for indices
+\RequirePackage{imakeidx}
+\makeindex[intoc]
+
+\RequirePackage{mfirstuc}
+\RequirePackage{titlesec, titletoc}
+
+% titles for chapter, section, etc
+\renewcommand{\frontmatter}{%
+\renewcommand{\thepart}{}
+\renewcommand{\thechapter}{}
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{}
+\assignpagestyle{\chapter}{frontmatter}
+\assignpagestyle{\part}{empty}
+
+% format sectioning commands and part tocs. 
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\large}{}{0pt}{\centering\MakeUppercase}
+  \titleformat{\section}[hang]
+  {\sffamily\bfseries\large}{}{0pt}{\MakeUppercase}
+\titleformat{\subsection}[hang]
+  {\sffamily\bfseries\large}{}{1em}{\capitalisewords}
+}
+
+\renewcommand{\mainmatter}{%
+\renewcommand{\thepart}{\arabic{part}}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\assignpagestyle{\chapter}{plain}
+\assignpagestyle{\part}{empty}
+
+% format sectioning commands and part tocs. 
+\titleformat{\part}[display]
+  {\sffamily\bfseries\large\filcenter}{\centering\MakeUppercase{Part}~\thepart\\}{0pt}{\capitalisewords}
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\large}{}{0pt}{\centering\MakeUppercase{Chapter}~\thechapter\\}
+\titleformat{\section}[hang]
+  {\sffamily\bfseries\large}{}{0pt}{\thesection~\MakeUppercase}
+\titleformat{\subsection}[hang]
+  {\sffamily\bfseries\large}{\thesubsection}{1em}{\capitalisewords}
+}
+
+
+
+
+
+
+\newcommand{\emergencymatter}{%
+\renewcommand{\thepart}{\arabic{part}}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\assignpagestyle{\chapter}{emergency}
+\assignpagestyle{\part}{emergency}
+
+% format sectioning commands and part tocs. 
+\titleformat{\part}[display]
+  {\sffamily\bfseries\large}{}{0pt}{\centering\MakeUppercase{Part}~\thepart\\}
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\large}{}{0pt}{\centering\MakeUppercase{Chapter}~\thechapter\\}
+\titleformat{\section}[hang]
+  {\sffamily\bfseries\large}{}{0pt}{\thesection~\MakeUppercase}
+\titleformat{\subsection}[hang]
+  {\sffamily\bfseries\large}{\thesubsection}{1em}{\capitalisewords}
+}
+
+

@@ -1,0 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{natops_barberpole}[2021/05/24 NATOPs barberpole pages]
+
+%MIL-DTL-85025B(AS)
+%3.1.5 Emergency procedures border. Each page (including entire chapters) of a NATOPS publication addressing emergency procedures shall be identified by an emergency border. This border, consisting of alternating black and white 9-point lines at a 45° angle, shall “bleed” off three sides of the page for flight manuals and general series manuals (top, right, and bottom of right-hand pages; and top, left, and bottom of left-hand pages). Dimensions are 1⁄4 inch (top and bottom) and 1/8 inch (left edge for left-hand pages, right edge for right-hand pages). See figure 6 for a sample NATOPS flight manual emergency border page. NATOPS pilot pocket checklists and aircrew pocket checklists have emergency borders on the left side of odd numbered pages only and on the left and top edges on even-numbered pages. PCL and APCL emergency borders are 1⁄2 inch in depth. Card checklists have emergency borders on all four sides. NATOPS ditching and bailout placards have a solid red, reflective border on all four sides.
+
+\RequirePackage{tikz}
+\usetikzlibrary{patterns,patterns.meta,calc}
+
+\newlength{\barberpoletop}
+\setlength{\barberpoletop}{0.25in}
+\newlength{\barberpoleside}
+\setlength{\barberpoleside}{0.25in}
+\newlength{\barberpoletoppcl}
+\setlength{\barberpoletoppcl}{0.5in}
+
+\newcommand{\oddpagebarberpole}{%
+\begin{tikzpicture}[remember picture, overlay]
+\draw [draw=none, pattern={Lines[angle=45,distance=18pt,line width=9pt]}, pattern color=black] (current page.north west) rectangle (current page.south east);
+\draw [fill = white, draw=none] ($(current page.north west)+(0,-\barberpoletop)$) rectangle ($(current page.south east)+(-\barberpoleside,\barberpoletop)$);
+\end{tikzpicture}}
+
+\newcommand{\evenpagebarberpole}{%
+\begin{tikzpicture}[remember picture, overlay]
+\draw [draw=none, pattern={Lines[angle=45,distance=18pt,line width=9pt]}, pattern color=black] (current page.north west) rectangle (current page.south east);
+\draw [fill = white, draw=none] ($(current page.north west)+(\barberpoleside,-\barberpoletop)$) rectangle ($(current page.south east)+(0,\barberpoletop)$);
+\end{tikzpicture}}
+
+\newcommand{\topbarberpole}{%
+\begin{tikzpicture}[remember picture, overlay]
+\draw [draw=none, pattern={Lines[angle=45,distance=18pt,line width=9pt]}, pattern color=black] (current page.north west) rectangle ($(current page.north east)+(0,-\barberpoletoppcl)$);
+\end{tikzpicture}}
+
+\newcommand{\allbarberpole}{%
+\begin{tikzpicture}[remember picture, overlay]
+\draw [draw=none, pattern={Lines[angle=45,distance=18pt,line width=9pt]}, pattern color=black] (current page.north west) rectangle (current page.south east);
+\draw [fill = white, draw=none] ($(current page.north west)+(\barberpoleside,-\barberpoletop)$) rectangle ($(current page.south east)+(-\barberpoleside,\barberpoletop)$);
+\end{tikzpicture}}
