@@ -1,6 +1,33 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{natops_flight_manualt}[2021/06/01 NATOPs flight manual]
 
+% set page sizes
+\usepackage{geometry}
+\geometry{
+  % showframe,
+  paperwidth=8.5in,
+  paperheight=11in,
+  left=0.75in,
+  right=0.75in,
+  top=0.5in,
+  bottom=1in,
+%  marginparsep=0.25in,
+%  marginparwidth=1.5in,
+%  includemp,
+  includehead,
+  showframe=true,
+  % The text width and height are calculated automatically.
+}
+\renewenvironment{quote}{%
+  \list{}{%
+    \leftmargin4cm   % this is the adjusting screw
+    \rightmargin\leftmargin
+  }
+  \item\relax
+}
+{\endlist}
+
+
 % use helvetica and times new roman
 \RequirePackage[scaled]{helvet}
 \RequirePackage[T1]{fontenc}
@@ -55,6 +82,7 @@
 
 \RequirePackage{mfirstuc}
 \RequirePackage{titlesec, titletoc}
+\RequirePackage{xcolor}
 
 % titles for chapter, section, etc
 \renewcommand{\frontmatter}{%
@@ -76,6 +104,7 @@
 }
 
 \renewcommand{\mainmatter}{%
+\pagecolor{white}
 \renewcommand{\thepart}{\arabic{part}}
 \renewcommand{\thechapter}{\arabic{chapter}}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
@@ -101,6 +130,7 @@
 
 
 \newcommand{\emergencymatter}{%
+\pagecolor{yellow!20}
 \renewcommand{\thepart}{\arabic{part}}
 \renewcommand{\thechapter}{\arabic{chapter}}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
@@ -120,4 +150,6 @@
   {\sffamily\bfseries\large}{\thesubsection}{1em}{\capitalisewords}
 }
 
+% for bingo pages 
+%\pagecolor{cyan!10}
 

@@ -8,9 +8,9 @@
 
 \newenvironment{_natops_generic_blurb}[1][]{%
 \ifblank{#1}{}{
-\begin{center}#1\end{center}}
+\begin{samepage}\begin{center}#1\end{center}}\nopagebreak
 \begin{quote}}{%
-\end{quote}}
+\end{quote}\end{samepage}}
 
 \newcommand{\warninglight}[1]{%
 \begin{tikzpicture}

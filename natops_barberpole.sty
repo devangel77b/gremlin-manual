@@ -17,22 +17,22 @@
 \newcommand{\oddpagebarberpole}{%
 \begin{tikzpicture}[remember picture, overlay]
 \draw [draw=none, pattern={Lines[angle=45,distance=18pt,line width=9pt]}, pattern color=black] (current page.north west) rectangle (current page.south east);
-\draw [fill = white, draw=none] ($(current page.north west)+(0,-\barberpoletop)$) rectangle ($(current page.south east)+(-\barberpoleside,\barberpoletop)$);
+\draw [fill = yellow!20, draw=none] ($(current page.north west)+(0,-\barberpoletop)$) rectangle ($(current page.south east)+(-\barberpoleside,\barberpoletop)$);
 \end{tikzpicture}}
 
 \newcommand{\evenpagebarberpole}{%
 \begin{tikzpicture}[remember picture, overlay]
 \draw [draw=none, pattern={Lines[angle=45,distance=18pt,line width=9pt]}, pattern color=black] (current page.north west) rectangle (current page.south east);
-\draw [fill = white, draw=none] ($(current page.north west)+(\barberpoleside,-\barberpoletop)$) rectangle ($(current page.south east)+(0,\barberpoletop)$);
+\draw [fill = yellow!20, draw=none] ($(current page.north west)+(\barberpoleside,-\barberpoletop)$) rectangle ($(current page.south east)+(0,\barberpoletop)$);
 \end{tikzpicture}}
 
 \newcommand{\topbarberpole}{%
 \begin{tikzpicture}[remember picture, overlay]
-\draw [draw=none, pattern={Lines[angle=45,distance=18pt,line width=9pt]}, pattern color=black] (current page.north west) rectangle ($(current page.north east)+(0,-\barberpoletoppcl)$);
+\draw [draw=yellow!20, pattern={Lines[angle=45,distance=18pt,line width=9pt]}, pattern color=black] (current page.north west) rectangle ($(current page.north east)+(0,-\barberpoletoppcl)$);
 \end{tikzpicture}}
 
 \newcommand{\allbarberpole}{%
 \begin{tikzpicture}[remember picture, overlay]
 \draw [draw=none, pattern={Lines[angle=45,distance=18pt,line width=9pt]}, pattern color=black] (current page.north west) rectangle (current page.south east);
-\draw [fill = white, draw=none] ($(current page.north west)+(\barberpoleside,-\barberpoletop)$) rectangle ($(current page.south east)+(-\barberpoleside,\barberpoletop)$);
+\draw [fill = yellow!20, draw=none] ($(current page.north west)+(\barberpoleside,-\barberpoletop)$) rectangle ($(current page.south east)+(-\barberpoleside,\barberpoletop)$);
 \end{tikzpicture}}
